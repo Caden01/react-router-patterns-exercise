@@ -1,10 +1,18 @@
-import './App.css';
+import React from "react";
+import { Routes, Route, Navigate, BrowserRouter } from "react-router-dom";
+import DogList from "./DogList";
+import DogDetails from "./DogDetails";
 
 function App() {
+  let dogs = ["duke", "perry", "tubby"];
   return (
-    <div className="App">
-      <h1>Good luck!</h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/dogs" element={<DogList />} />
+        <Route path="/dogs/:name" element={<DogDetails dogs={dogs} />} />
+        <Route path="/*" element={<Navigate to="/dogs" />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
